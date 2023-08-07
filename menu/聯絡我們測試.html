@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯絡測試</title>
+    <link href="../picture/正艾神LOGO原檔(頁籤用).jpg" rel="icon" type="image/jpg">
+    <link rel="stylesheet" href="../css/nav1.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+</head>
+<style>
+    a {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    .send {
+        background-color: burlywood;
+        border: 3px solid burlywood;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .form {
+        background-color: antiquewhite;
+        position: fixed;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* 使用top和left屬性來將表單位置設置在頁面的中央。transform屬性用於調整表單位置，使其水平和垂直都置中於頁面上。 */
+        width: fit-content;
+        height: 250px;
+        border-radius: 5px;
+        z-index: 9998;
+    }
+
+    .table {
+        text-align: center;
+        background-color: white;
+        border: 3px solid antiquewhite;
+        border-radius: 5px;
+        margin: 2px;
+        height: fit-content;
+        font-size: 20px;
+    }
+
+    .tabletext {
+        border: 3px solid antiquewhite;
+        background-color: antiquewhite;
+        border-radius: 5px;
+        height: fit-content;
+        font-size: 25px;
+    }
+
+    input {
+        font-size: 22px;
+        padding: 10px 5px;
+        border: 1px solid black;
+        margin: 10px;
+    }
+
+    
+    .cancelbutton{
+        position: absolute;
+        right: -5px;
+        top: -5px;
+        width: 26px;
+        height: 26px;
+        margin-top: 0px;
+        /* margin-right: 60px; 這段不要 */
+        cursor: pointer;
+        z-index: 19999;
+    }
+
+    .wanttoknow {
+        width: 250px;
+        height: 40px;
+        word-wrap: break-word;
+        text-align: left;
+        padding: 15px;
+    }
+
+</style>
+<script>
+
+    $(function(){
+        $('#contact-button').click(function(){
+            $('#contact-form').css('display', 'block').css('opacity', '100%');
+        })
+
+        $('a').click(function(){
+            $('#contact-form').hide(300);
+        })
+    })
+
+    $(document).ready(function(){
+        $('#formfeedback').submit(function(){
+            if(  $("#tel").val() =='' || $('#message').val() == '' ){
+                event.preventDefault();
+                $('#tel')
+                    .css('background-color', 'rgba(255, 255, 25, 50%)')
+                $('#message')
+                    .css('background-color', 'rgba(255, 255, 25, 50%)')
+                return;
+            } else 
+            {
+                var confirmed = confirm('確定要提交表單嗎？');
+                if (confirmed){
+                    alert("感謝您的提交，我們會盡快進行回復。")
+                }
+                return confirmed;
+                // alert("感謝您的提交，我們會盡快進行回復。")
+            }
+        })
+    })
+
+</script>
+<body>
+    <div class="tophead">
+        <div class="marklogo">
+            <a href="../project封面.html">
+                <img src="../picture/正艾神LOGO原檔.jpg" class="marklogo">
+            </a>
+        </div>
+    </div>
+
+
+    <div class="menudiv">
+        <button onclick="location.href='./首頁.html'" class="menubutton">首頁</button>
+        <button onclick="location.href='./點我看產品.html'" class="menubutton">點我看產品</button>
+        <button onclick="" class="menubutton">我的購買紀錄</button>
+        <button onclick="location.href='./常見Q&A.html'" class="menubutton">常見Q&A</button>
+        <button id="contact-button" class="menubutton">聯絡我們</button>
+    </div>
+
+
+    <div id="contact-form" style="display: none;">
+        <form class="form" id="formfeedback">
+            <div class="table"> 
+                <h3>聯絡我們</h3>
+                <p>謝謝您的主動聯絡，請留下想要諮詢的問題，我們會用以下資訊盡快給予回覆。</p>
+            </div>
+
+            <div class="tabletext">
+                <label for="tel">
+                    您的聯絡電話：
+                </label>
+                <input type="tel" name="tel" id="tel" required><br>
+
+                <label for="email">
+                    您的電子郵件：
+                </label>
+                <input type="email" name="email" id="email"><br>
+
+                <label for="message">想了解的問題：</label>
+                <input type="message" name="message" id="message" class="wanttoknow" required><br>
+                <button type="submit" onclick="showMsg" class="send">送出</button>
+            </div>
+            
+            <a>
+                <img src="../picture/cancel.png" class="cancelbutton">
+            </a>
+           
+        </form>
+    </div>
+</body>
+</html>

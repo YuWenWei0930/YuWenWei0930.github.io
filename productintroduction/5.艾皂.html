@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>艾皂</title>
+    <link href="../picture/正艾神LOGO原檔(頁籤用).jpg" rel="icon" type="image/jpg">
+    <link rel="stylesheet" href="../css/nav1.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+</head>
+<style>
+
+    a {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    .product {
+        display: flex;
+        align-items: center;
+    }
+
+    input {
+        font-size: 22px;
+        padding: 10px 5px;
+        border: 1px solid black;
+        margin: 10px;
+    }
+
+</style>
+<script>
+    $(function(){
+        $('#aaa').tabs()
+    })
+
+    $(function() {
+        $('.images li').on('click', function() {
+            // 將所有圖片的樣式還原
+            $('.images li img').removeClass('active');
+            
+            // 取得當前點擊的圖片，並添加樣式
+            var img = $(this).find('img');
+            img.addClass('active');
+            
+            // 將主圖片切換為當前點擊的圖片
+            var src = img.attr('src');
+            $('#main').attr('src', src);
+        });
+    });
+
+    $(function(){
+        $('#contact-button').click(function(){
+            $('#contact-form').css('display', 'block').css('opacity', '100%');
+        })
+
+        $('a').click(function(){
+            $('#contact-form').hide(300);
+        })
+    })
+
+    $(document).ready(function(){
+        $('#formfeedback').submit(function(){
+            if(  $("#tel").val() =='' || $('#message').val() == '' ){
+                event.preventDefault();
+                $('#tel')
+                    .css('background-color', 'rgba(255, 255, 25, 50%)')
+                $('#message')
+                    .css('background-color', 'rgba(255, 255, 25, 50%)')
+                return;
+            } else {
+                var confirmed = confirm('確定要提交表單嗎？');
+                if(confirmed){
+                    alert("感謝您的提交，我們會盡快進行回復。")
+                }
+                return confirmed;
+                // alert("感謝您的提交，我們會盡快進行回復。")
+            }
+        })
+    })
+
+</script>
+
+<body>
+    <div class="tophead">
+        <div class="marklogo">
+            <a href="../index.html">
+                <img src="../picture/正艾神LOGO原檔.jpg" class="marklogo">
+            </a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="product">
+            <ul class="images">
+                <li style="margin-top: -188px;"><img src="../picture/艾皂/艾皂直向縮圖1.jpg"></li>
+                <li><img src="../picture/艾皂/whitecolor.jpg"></li>
+                <li><img src="../picture/艾皂/whitecolor.jpg"></li>
+            </ul>
+                <img src="../picture/艾皂/艾皂直向縮圖1.jpg" id="main" class="mainphoto">    
+        </div>
+    
+        <div class="productdetail">
+            <h3 class="goodtitle">
+                正艾神｜【艾皂】<hr>
+            </h3>
+            <ul class="goodinfo">
+                <li>
+                    天然艾草製造，不額外添加過多的化學藥劑與起泡成分，
+                    藉由按摩過程，深層清潔毛孔，不論您是乾肌、油肌或是敏感肌都能使用。    
+                </li>
+                <li class="separate">separate</li>
+                <li>含量：一顆。</li>
+                <li class="separate">separate</li>
+                <li>有效期限：2年</li>
+                <li class="separate">separate</li>
+                <li>NT$200</li>
+            </ul>
+            <p class="freesend">全館消費滿NT$2000再享免運！</p>
+        </div>
+    </div>
+
+    <div class="menudiv">
+        <button onclick="location.href='../menu/首頁.html'" class="menubutton">首頁</button>
+        <button onclick="location.href='../menu/點我看產品.html'" class="menubutton">點我看產品</button>
+        <button onclick="location.href='../menu/常見Q&A.html'" class="menubutton">常見Q&A</button>
+        <button id="contact-button" class="menubutton">聯絡我們</button>
+    </div>
+    
+    <div id="contact-form" style="display: none;">
+        <form class="form" id="formfeedback">
+            <div class="table"> 
+                <h3>聯絡我們</h3>
+                <p>謝謝您的主動聯絡，請留下想要諮詢的問題，我們會用以下資訊盡快給予回覆。</p>
+            </div>
+
+            <div class="tabletext">
+                <label for="tel">
+                    您的聯絡電話：
+                </label>
+                <input type="tel" name="tel" id="tel" required><br>
+
+                <label for="email">
+                    您的電子郵件：
+                </label>
+                <input type="email" name="email" id="email"><br>
+
+                <label for="message">想了解的問題：</label>
+                <input type="message" name="message" id="message" class="wanttoknow" required><br>
+                <button type="submit" onclick="showMsg" class="send">送出</button>
+            </div>
+            
+            <a>
+                <img src="../picture/cancel.png" class="cancelbutton">
+            </a>
+           
+        </form>
+    </div>
+
+    <hr>
+    <div id="aaa">
+        <ul>
+            <li><a href="#goodsdiscription">產品描述</a></li>
+            <li><a href="#paysendway">寄送及付款方式</a></li>
+            <li><a href="#consumerfeedback">顧客評價</a></li>
+        </ul>
+        <div id="goodsdiscription">
+            <ul>
+                <li>注意事項：
+                    <ol>
+                        <li>本產品為外用自發熱艾灸貼，打開包裝後立即使用。</li>
+                        <li>
+                            極少數患者貼敷後起泡(古稱"瘢灸痕")，可用消毒針挑破，放出積液。
+                            保持乾燥或塗抹消炎藥膏即可自癒，癒後可繼續貼灸。
+                        </li>
+                        <li>避免在被褥中使用，謹防低溫燙傷；使用時如感覺溫度過熱，請將溫控貼
+                            貼於產品外表面中心部位，防止皮膚灼傷。
+                        </li>
+                        <li>
+                            本產品屬於日用品，不具有疾病預防、治療功能，不可替代醫療用品。
+                        </li>
+                    </ol>
+                </li>
+                <li>儲存方法：
+                    <ol>
+                        <li>密封，置於乾燥處保存；每半年可打開將其放在陽光曝曬避免潮濕。</li>
+                        <li>請置於兒童接觸不到的地方。</li>
+                    </ol>
+                </li> 
+                <li>生產地點：河北</li>
+                <li>有效期限：兩年</li>
+                <li>生產日期：見封口處壓碼</li>            
+            </ul>
+        </div>
+        <div id="paysendway"> 提供本島與外島寄送服務<hr>
+            <table>
+                <tr style="font-size: 30px;">
+                    <th>送貨方式</th>
+                    <th>付款方式</th>
+                </tr>
+                <tr>
+                    <td>7-11貨到付款</td>
+                    <td>全家貨到付款</td>
+                </tr>
+                <tr>
+                    <td>7-11貨到付款</td>
+                    <td>全家貨到付款</td>
+                </tr>
+                <tr>
+                    <td>宅配到府(取貨付款)</td>
+                    <td>宅配到府(取貨付款)</td>
+                </tr>
+            </table>
+        </div>
+        <div id="consumerfeedback">
+            (這裡寫的是顧客評價)
+        </div>
+    </div>
+<!-- JQ的UI -->
+    <a href="#top" class="backtotop">▲</a>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test6</title>
+    <link rel="stylesheet" href="../css/nav1.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+</head>
+<style>
+ 
+    h1 {
+	text-align: center;
+    font-size: 40px;
+    position: relative;
+    top: 150px;
+    margin-bottom: 50px;
+    }
+
+    .productscontainer {
+        position: relative;
+        top: 100px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .product {
+        text-align: center;
+        margin: 20px;
+        border: grey solid 2px;
+        border-radius: 2px;
+        width: 360px;
+        height: 540px;
+    }
+
+    .product img {
+        width: 100%;
+        height: 270px;
+        object-fit: cover;
+    }
+
+    .goodsname {
+        text-align: left;
+        margin-top: 10px;
+        margin-bottom: -10px;
+        padding-left: 15px;
+        font-size: 25px;
+        /* font-family: 'Microsoft Jhenghei'; */
+    }
+
+    .goodsummary {
+        text-align: left;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: 18px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .buycount {
+        font-size: 18px;
+    }
+
+    .product p.price {
+        font-weight: bold;
+        text-align: left;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: 20px;
+    }
+
+
+    .product input.quantity {
+        width: 40px
+    }
+    
+
+    .addtocart {
+        background-color: rgb(186, 221, 150);
+        border:rgb(186, 221, 150) solid 2px;
+        margin-left: -50%;
+    }
+
+    .presstosee {
+        background-color: rgb(186, 221, 150);
+        border:rgb(186, 221, 150) solid 2px;
+    }
+
+    .cart {
+        position: fixed;
+        top: 200px;
+        right: 0px;
+        width: 120px;
+        background-color: rgb(227, 227, 225);
+    }
+
+    .shoppingcarticon {
+        position: relative;
+        left: 5px;
+        top: 5px;
+        width: 30px; 
+        height: 30px;
+    }
+
+    .presstobuy {
+        background-color: rgb(186, 221, 150);
+        font-size: 15px;
+        position: relative;
+        left: 35px;
+        border: 2px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+
+</style>
+<script>
+    $(document).ready(function() {
+        // 點擊加入購物車按鈕
+        $('.add-to-cart').click(function() {
+            var product = $(this).parent();
+            var productName = product.find('h3').text();
+            var productPrice = parseInt(product.find('.price').text().substring(1));
+            var productQuantity = parseInt(product.find('.quantity').val());
+
+            // 建立新的購物車項目
+            var item = $('<li></li>');
+            item.text(productName + ' x ' + productQuantity);
+            item.data('price', productPrice * productQuantity);
+            
+            // 加入刪除按鈕
+            var deleteBtn = $('<button class="delete-item">刪除</button>');
+            item.append(deleteBtn);
+
+            // 將購物車項目添加到購物車列表中
+            $('.cart-items').append(item);
+            
+            // 更新總價格
+            updateTotalPrice();
+        });
+        
+        // 點擊刪除按鈕刪除購物車項目
+        $(document).on('click', '.delete-item', function() {
+            $(this).parent().remove();
+            updateTotalPrice();
+        });
+        
+        // 輸入數量時更新總價格
+        $('.quantity').on('input', function() {
+            updateTotalPrice();
+        });
+
+        // $('form').submit(function(event) {
+        //     event.preventDefault();
+        //     var totalPrice = $('.total-price').text();
+        //     alert("您購買的產品" + totalPrice +
+        //           " \n請前往下一頁");
+        // });
+
+
+        // $('form').submit(function(event) {
+        //     event.preventDefault();
+        //     var totalPrice = $('.total-price').text();
+        //     alert("您購買的產品" + totalPrice);
+        //     var confirmed = confirm('是否前往下一步？');
+        //     if(confirmed){
+        //         window.location.href = "../購買系列/affidavit.html";
+        //     }
+        //     return;
+        // });
+
+
+        $('form').submit(function(event) {
+            event.preventDefault();
+            var totalPrice = $('.total-price').text();
+            // alert("您購買的產品" + totalPrice);
+            var confirmed = confirm( "您購買的產品" + totalPrice+ '\n是否前往下一步？');
+            if(confirmed){
+                window.location.href = "../購買系列/affidavit.html";
+            }
+            return;
+        });
+
+    });
+
+    function updateTotalPrice() {
+        var totalPrice = 0;
+        $('.cart-items li').each(function() {
+            var itemPrice = $(this).data('price');
+            totalPrice += itemPrice;
+        });
+        $('.total-price').text('總價格為：$' + totalPrice);
+    }
+</script>
+
+<body>
+    <div class="tophead">
+        <div>
+            <a href="">
+                <img src="../picture/正艾神LOGO原檔.jpg" class="marklogo">
+            </a>
+        </div>
+    </div>
+
+    <div class="menudiv">(待優化)
+        <button onclick="location.href='./首頁.html'" class="menubutton">首頁</button>
+        <button onclick="location.href='./點我看產品.html'" class="menubutton">點我看產品</button>
+        <button onclick="" class="menubutton">查看購物車(會拿掉)</button>
+        <button onclick="" class="menubutton">我的購買紀錄</button>
+        <button onclick="location.href='./常見Q&A.html'" class="menubutton">常見Q&A</button>
+        <button id="contact-button" class="menubutton">聯絡我們</button>
+    </div>
+
+
+	<h1>正艾神｜精選好物</h1>
+	<div class="productscontainer">
+		<div class="product">
+			<img src="../picture/艾灸貼.jpg">
+			<h3 class="goodsname">艾灸貼</h3>
+            <p class="goodsummary">
+                內含艾草藥布層，模擬艾灸熱效應原理，隨時隨地輕鬆艾灸。
+                舒緩痠痛的經絡，進而改善其在生活上對您造成的負擔，
+                讓養生不再成為一件麻煩事。
+            </p>
+			<p class="price">$400/10片入</p>
+            <label for="buy" class="buycount">請輸入購買數量：</label>
+			<input id="buy" type="number" min="0" value="0" class="quantity"><br>
+			<button class="add-to-cart addtocart">
+                加入購物車
+            </button>
+            <a href="../productintroduction/1.艾灸貼.html" target="_blank">
+                <button class="presstosee">
+                    了解產品
+                </button>
+            </a>
+
+		</div>
+		<div class="product">
+			<img src="../picture/足底貼.jpg">
+			<h3 class="goodsname">足底貼</h3>
+            <p class="goodsummary">
+                (內含艾草藥布層，模擬艾灸熱效應原理，隨時隨地輕鬆艾灸。
+                舒緩痠痛的經絡，進而改善其在生活上對您造成的負擔，
+                讓養生不再成為一件麻煩事。)
+            </p>
+			<p class="price">$400/20片入</p>
+            <label for="buy">請輸入購買數量：</label>
+			<input id="buy" type="number" min="0" value="0" class="quantity"><br>
+			<button class="add-to-cart addtocart">
+                加入購物車
+            </button>
+            <a href="../productintroduction/2.足底貼.html" target="_blank">
+                <button class="presstosee">
+                    了解產品
+                </button>
+            </a>
+
+		</div>
+		<div class="product">
+			<img src="../picture/艾柱.jpg">
+			<h3 class="goodsname">艾柱</h3>
+            <p class="goodsummary">
+                (內含艾草藥布層，模擬艾灸熱效應原理，隨時隨地輕鬆艾灸。
+                舒緩痠痛的經絡，進而改善其在生活上對您造成的負擔，
+                讓養生不再成為一件麻煩事。)
+            </p>
+			<p class="price">$300/30顆入</p>
+            <label for="buy">請輸入購買數量：</label>
+			<input id="buy" type="number" min="0" value="0" class="quantity"><br>
+			<button class="add-to-cart addtocart">
+                加入購物車
+            </button>
+            <a href="../productintroduction/3.艾柱.html">
+                <button class="presstosee">
+                    了解產品
+                </button>
+            </a>
+		</div>
+	</div>
+
+    <div class="productscontainer">
+		<div class="product">
+			<img src="../picture/艾灸膏.jpg">
+			<h3 class="goodsname">艾灸膏</h3>
+            <p class="goodsummary">
+                (內含艾草藥布層，模擬艾灸熱效應原理，隨時隨地輕鬆艾灸。
+                舒緩痠痛的經絡，進而改善其在生活上對您造成的負擔，
+                讓養生不再成為一件麻煩事。)
+            </p>
+			<p class="price">$200/一罐</p>
+            <label for="buy">請輸入購買數量：</label>
+			<input id="buy" type="number" min="0" value="0" class="quantity"><br>
+			<button class="add-to-cart addtocart">
+                加入購物車
+            </button>
+            <a href="../productintroduction/4.艾灸膏.html" target="_blank">
+                <button class="presstosee">
+                    了解產品
+                </button>
+            </a>
+		</div>
+		<div class="product">
+			<img src="../picture/艾皂.jpg">
+			<h3 class="goodsname">艾皂</h3>
+            <p class="goodsummary">
+                (內含艾草藥布層，模擬艾灸熱效應原理，隨時隨地輕鬆艾灸。
+                舒緩痠痛的經絡，進而改善其在生活上對您造成的負擔，
+                讓養生不再成為一件麻煩事。)
+            </p>
+			<p class="price">$200/一顆</p>
+            <label for="buy">請輸入購買數量：</label>
+			<input id="buy" type="number" min="0" value="0" class="quantity"><br>
+			<button class="add-to-cart addtocart">
+                加入購物車
+            </button>
+            <a href="../productintroduction/5.艾皂.html" target="_blank">
+                <button class="presstosee">
+                    了解產品
+                </button>
+            </a>
+		</div>
+	</div>
+
+
+	<div class="cart">
+		<h2><img src="../picture/shopping-cart.png" class="shoppingcarticon">
+            購物車
+        </h2>
+		<ul class="cart-items">
+		</ul>
+		<p class="total-price">總價格：$0</p>
+		<form>
+			<!-- <label for="city">請輸入所在城市：</label>
+			<input type="text" id="city" required> -->
+			<button type="submit" class="presstobuy">點我去結帳</button>
+		</form>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="script.js"></script>
+
+</body>
+</html>
+
+

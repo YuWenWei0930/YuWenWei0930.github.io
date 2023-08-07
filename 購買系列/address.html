@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>選擇寄送及付款方式</title>
+    <link href="../picture/正艾神LOGO原檔(頁籤用).jpg" rel="icon" type="image/jpg">
+    <link rel="stylesheet" href="../css/nav1.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+</head>
+
+<style>
+    a {
+        text-decoration: none;
+    }
+    /* input[type="text"]:valid,
+    input[type="tel"]:valid {background-color: blanchedalmond;} 
+
+    input[type="text"]:invalid,
+    input[type="tel"]:invalid {background-color: red;} */
+
+    .addressform {
+        display: inline-block;
+        width: fit-content;
+        position: relative;
+        top: 100px;
+        background-color: white;
+        padding: 5px;
+        margin: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 150px;
+        margin-right: 150px;
+        border: 2px solid  rgb(186, 221, 150);
+        border-radius: 3px;
+        font-size: 20px;
+    }
+    
+
+    /* .addressform {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border: 2px solid  rgb(186, 221, 150);
+        border-radius: 3px;
+        margin: 5px;
+        font-size: 20px;
+    } */
+
+    .sendbookingbt{
+        background-color: rgb(186, 221, 150);
+        border: 1px solid rgb(186, 221, 150);
+        font-size: 20px;
+        margin: 5px;
+        font-weight: bold;
+    }
+
+    .sendbookingform {
+        color: white;
+    }
+</style>
+
+<script>
+
+    // 自己寫的
+    // $(document).ready(function(){
+    //     $('#addressform').submit(function(){
+    //         if(  $("#tel").val() =='' || $('#message').val() == '' ){
+    //             event.preventDefault();
+    //             $('#tel')
+    //                 .css('background-color', 'red')
+    //             $('#message')
+    //                 .css('background-color', 'red')
+    //             return;
+    //         } else 
+    //         {
+    //             var confirmed = confirm('確定要提交表單嗎？');
+    //             if (confirmed){
+    //                 alert("感謝您的訂購，產品將於5-7天後送達，貨到時將發送簡訊通知取貨。")
+    //             }
+    //             return confirmed;
+    //             // alert("感謝您的提交，我們會盡快進行回復。")
+    //         }
+    //     })
+    // })
+
+
+    $(function() {
+        // 當送出按鈕被點擊時
+        $('button[type="submit"]').click(function() {
+            // 檢查每個必填欄位是否都有填寫
+            var formValid = true;
+            $('.addressform [required]').each(function() {
+            if ($(this).val() === '') {
+                formValid = false;
+                $(this).css('background-color', 'red');
+            } else {
+                $(this).css('background-color', '');
+            }
+            });
+
+            // 如果有必填欄位沒填，則提示使用者
+            if (!formValid) {
+            alert('請填寫所有必填欄位');
+            return false;
+            }
+
+            // 如果所有必填欄位都有填，則顯示確認視窗
+            if (confirm('確定要提交表單嗎？')) {
+            // 如果使用者確定要提交，則顯示感謝訊息
+            alert('感謝您的訂購，產品將於5-7天後送達，貨到時將發送簡訊通知取貨。');
+            } else {
+            // 如果使用者取消提交，則停止表單提交動作
+            return false;
+            }
+        });
+    });
+
+
+    $(function(){
+        $('#contact-button').click(function(){
+            $('#contact-form').css('display', 'block').css('opacity', '100%');
+        })
+
+        $('a').click(function(){
+            $('#contact-form').hide(300);
+        })
+    })
+
+    $(document).ready(function(){
+        $('#formfeedback').submit(function(){
+            if(  $("#tel").val() =='' || $('#message').val() == '' ){
+                event.preventDefault();
+                $('#tel')
+                    .css('background-color', 'rgba(255, 255, 25, 50%)')
+                $('#message')
+                    .css('background-color', 'rgba(255, 255, 25, 50%)')
+                return;
+            } else 
+            {
+                var confirmed = confirm('確定要提交表單嗎？');
+                if (confirmed){
+                    alert("感謝您的提交，我們會盡快進行回復。")
+                }
+                return confirmed;
+                // alert("感謝您的提交，我們會盡快進行回復。")
+            }
+        })
+    })
+
+</script>
+<body>
+    <div class="tophead">
+        <div class="marklogo">
+            <a href="../index.html">
+                <img src="../picture/正艾神LOGO原檔.jpg" class="marklogo">
+            </a>
+        </div>
+    </div>
+<a href=""></a>
+    <div class="menudiv">
+        <button onclick="location.href='../menu/首頁.html'" class="menubutton">首頁</button>
+        <button onclick="location.href='../menu/點我看產品.html'" class="menubutton">點我看產品</button>
+        <button onclick="location.href='../menu/常見Q&A.html'" class="menubutton">常見Q&A</button>
+        <button id="contact-button" class="menubutton">聯絡我們</button>
+    </div>
+
+    <div id="contact-form" style="display: none;">
+        <form class="form" id="formfeedback">
+            <div class="table"> 
+                <h3>聯絡我們</h3>
+                <p>謝謝您的主動聯絡，請留下想要諮詢的問題，我們會用以下資訊盡快給予回覆。</p>
+            </div>
+
+            <div class="tabletext">
+                <label for="tel">
+                    您的聯絡電話：
+                </label>
+                <input type="tel" name="tel" id="tel" required><br>
+
+                <label for="email">
+                    您的電子郵件：
+                </label>
+                <input type="email" name="email" id="email"><br>
+
+                <label for="message">想了解的問題：</label>
+                <input type="message" name="message" id="message" class="wanttoknow" required><br>
+                <button type="submit" onclick="showMsg" class="send">送出</button>
+            </div>
+            
+            <a>
+                <img src="../picture/cancel.png" class="cancelbutton">
+            </a>
+           
+        </form>
+    </div>
+
+    <div class="addressform" id="addressform">
+        <h2>選擇寄送及付款方式</h2>
+        <label for="message">收貨人姓名(必填欄位)：</label>
+        <input type="message" name="message" id="message" required><br>
+
+        <label for="tel">連絡電話(必填欄位)：</label>
+        <input type="tel" name="tel" id="tel" required><br>
+
+        <label for="sendaddress">送貨地點(必填欄位)：</label>
+        <input type="text" id="sendaddress" list="sendaddresslist" required>
+        <datalist id="sendaddresslist">
+            <option value="本島">
+            <option value="外島">
+        </datalist><br>
+  
+        <label for="sendway">送貨方式(必填欄位)：</label>
+        <input type="text" id="sendway" list="sendwaylist" required>
+        <datalist id="sendwaylist">
+            <option value="7-11貨到付款">
+            <option value="全家貨到付款">
+            <option value="宅配到府(取貨付款)">
+        </datalist><br>
+    
+        <label for="payway">付款方式(必填欄位)：</label>
+        <input type="text" id="payway" list="paywaylist" required>
+        <datalist id="paywaylist">
+            <option value="7-11貨到付款">
+            <option value="全家貨到付款">
+            <option value="宅配到府(取貨付款)">
+        </datalist><br>
+
+        <label for="note">備註：</label>
+        <input type="text" name="note" id="note"><br>
+        
+        <button type="submit" onclick="showMsg" class="sendbookingbt">
+            <a href="../project封面.html" class="sendbookingform">送出</a>
+        </button>
+    </div>
+    
+    <!-- alert:感謝您的訂購，產品將於5-7天後送達，貨到時將發送簡訊通知取貨。
+    買完之後要跳回首頁，並有選項可以觀看"購買紀錄" -->
+</body>
+</html>

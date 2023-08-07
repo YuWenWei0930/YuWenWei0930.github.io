@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST4</title>
+    <link rel="stylesheet" href="../css/nav1.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+</head>
+<style>
+    .wrapper {
+        position: relative;
+        top: 50px;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 560px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .wrapper {
+            flex-direction: column;
+        }
+        .leftdiv {
+            flex: 1;
+            order: 1;
+        }
+        .rightdiv {
+            flex: 1;
+            order: 2;
+        }
+    }
+
+    .leftdiv {
+        background-color: green;
+        flex: 4;
+        overflow: hidden;
+    }
+
+    /* TRY1
+    .leftdivphoto {
+        max-width: 100%;
+        max-height: 100%;
+    } */
+
+    /* TRY2 */
+    .leftdivphoto {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .rightdiv {
+        background-color: coral;
+        flex: 3;
+    }
+
+</style>
+<body>
+    <div class="wrapper">
+        <div class="leftdiv">
+            <a id="imgshref" href="../productintroduction/1.艾灸貼.html" >
+                <img src="../picture/艾灸貼/艾灸貼縮圖照.jpg" id="imgs" border="0" class="leftdivphoto"/>
+            </a>
+            <script type="text/javascript">
+                var iImage = -1;
+                setImage();
+                function setImage()
+                {
+                    var img = new Array();
+                    var url = new Array();
+                    img[0] = "../picture/艾灸貼/艾灸貼縮圖照.jpg"; url[0] = "../productintroduction/1.艾灸貼.html";
+                    img[1] = "../picture/足底貼.jpg"; url[1] = "../productintroduction/2.足底貼.html";
+                    img[2] = "../picture/艾柱.jpg";   url[2] = "../productintroduction/3.艾柱.html";
+                    img[3] = "../picture/艾灸膏.jpg"; url[3] = "../productintroduction/4.艾灸膏.html";
+                    img[4] = "../picture/艾皂.jpg";	 url[4] = "../productintroduction/5.艾皂.html";
+                    
+                    iImage += 1;
+                    if (iImage >= img.length)
+                        iImage = 0;
+                    document.getElementById("imgs").src = img[iImage];
+                    document.getElementById("imgshref").href = url[iImage];
+                    
+                    setTimeout(setImage, 3000);
+                }
+            </script>
+        </div>
+        <div class="rightdiv">我是右邊DIV</div>
+    </div>
+</body>
+
+</html>

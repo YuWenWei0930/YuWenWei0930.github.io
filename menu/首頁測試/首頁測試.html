@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁測試</title>
+    <link href="../picture/正艾神LOGO原檔(頁籤用).jpg" rel="icon" type="image/jpg">
+    <link rel="stylesheet" href="../css/nav1.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+</head>
+<style>
+    a {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    button {
+        cursor: pointer;
+    }
+    
+    /* .wrapper {
+        background-color: rgba(255, 255, 25, 50%);
+        display: flex; 使用 flex 布局
+        justify-content: space-between; 將子元素分散對齊
+        align-items: center; 將子元素垂直居中對齊
+        flex-wrap: wrap; 
+    } */
+
+
+
+
+    /* TEST */
+    .wrapper {
+        background-color: pink;
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        width: 100%;
+        top: 15%;
+        bottom: 50px;
+        justify-content: center; 
+        /* 子元素水平居中 */
+    }
+
+    /* .officialprojector {
+        display: inline-block; 這段是不要的
+        position: relative;
+        bottom: -300px;
+        width: 65%;
+        height: 400px;
+        background-color: dodgerblue;
+        object-fit: conver; 這段是不要的
+    } */
+
+
+    /* .officialprojector {
+        display: inline-block; 
+        這段是不要的
+        display: flex;
+        position: relative;
+        bottom: -300px;
+        width: 65%;
+        height: 400px;
+        background-color: dodgerblue;
+        object-fit: conver; 這段是不要的
+    } */
+
+    .officialprojector {
+
+        display: flex;
+        align-items: center;
+        position: relative;
+        bottom: -300px;
+        width: 65%;
+        height: 400px;
+        background-color: dodgerblue;
+        object-fit: cover; 
+    }
+
+
+    .goodsprojector {
+        position: relative;
+        display: inline-block;
+        top: 0px;
+        left: 0;
+        width: 100%;
+        height: 400px;
+    }
+
+    .officialwebsite {
+        /* display: inline-block; */
+        position: relative;
+        bottom: -300px;
+        width: 35%;
+        height: 400px;
+        background-color: greenyellow;
+    }
+
+
+</style>
+<script>
+
+$(function(){
+        $('#contact-button').click(function(){
+            $('#contact-form').css('display', 'block').css('opacity', '100%');
+        })
+
+        $('a').click(function(){
+            $('#contact-form').hide(300);
+        })
+    })
+
+    $(document).ready(function(){
+        $('#formfeedback').submit(function(){
+            if(  $("#tel").val() =='' || $('#message').val() == '' ){
+                event.preventDefault();
+                $('#tel')
+                    .css('background-color', 'rgba(255, 255, 25, 50%)')
+                $('#message')
+                    .css('background-color', 'rgba(255, 255, 25, 50%)')
+                return;
+            } else 
+            {
+                var confirmed = confirm('確定要提交表單嗎？');
+                if (confirmed){
+                    alert("感謝您的提交，我們會盡快進行回復。")
+                }
+                return confirmed;
+                // alert("感謝您的提交，我們會盡快進行回復。")
+            }
+        })
+    })
+
+</script>
+
+<body>
+    <div class="tophead">
+        <div class="marklogo">
+            <a href="../project封面.html">
+                <img src="../picture/正艾神LOGO原檔.jpg" class="marklogo">
+            </a>
+        </div>
+    </div>
+
+
+ <!-- ==========分隔線========== -->
+    <div class="wrapper">
+        <div class="officialprojector">
+        <!-- ↑這個DIV有加id="imgshref"，但看起來不影響，如果之後有問題再加回去 -->
+            <a id="imgshref" href="../productintroduction/1.艾灸貼.html" >
+                <img src="../picture/艾灸貼/艾灸貼縮圖照.jpg" id="imgs" border="0" class="goodsprojector"/>
+            </a>
+            <script type="text/javascript">
+                var iImage = -1;
+                setImage();
+                function setImage()
+                {
+                    var img = new Array();
+                    var url = new Array();
+                    img[0] = "../picture/艾灸貼/艾灸貼縮圖照.jpg"; url[0] = "../productintroduction/1.艾灸貼.html";
+                    img[1] = "../picture/足底貼.jpg"; url[1] = "../productintroduction/2.足底貼.html";
+                    img[2] = "../picture/艾柱.jpg";   url[2] = "../productintroduction/3.艾柱.html";
+                    img[3] = "../picture/艾灸膏.jpg"; url[3] = "../productintroduction/4.艾灸膏.html";
+                    img[4] = "../picture/艾皂.jpg";	 url[4] = "../productintroduction/5.艾皂.html";
+                    
+                    iImage += 1;
+                    if (iImage >= img.length)
+                        iImage = 0;
+                    document.getElementById("imgs").src = img[iImage];
+                    document.getElementById("imgshref").href = url[iImage];
+                    
+                    setTimeout(setImage, 1000);
+                }
+            </script>
+        </div>
+        <div class="officialwebsite">
+
+        </div>
+    </div>
+
+
+
+    <div class="menudiv">
+        <button onclick="location.href='./首頁.html'" class="menubutton">首頁</button>
+        <button onclick="location.href='./點我看產品.html'" class="menubutton">點我看產品</button>
+        <button onclick="" class="menubutton">我的購買紀錄</button>
+        <button onclick="location.href='./常見Q&A.html'" class="menubutton">常見Q&A</button>
+        <button id="contact-button" class="menubutton">聯絡我們</button>
+    </div>
+
+    <div id="contact-form" style="display: none;">
+        <form class="form" id="formfeedback">
+            <table class="table">
+                <tr>
+                    <th>聯絡我們</th>
+                </tr>
+                <tr>
+                    <td>
+                        謝謝您的主動聯絡，請留下想要諮詢的問題，我們會用以下資訊盡快給予回覆。
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <label for="tel">
+                    您的聯絡電話：
+                </label>
+                <input type="tel" name="tel" id="tel" required><br>
+
+                <label for="email">
+                    您的電子郵件：
+                </label>
+                <input type="email" name="email" id="email"><br>
+
+                <label for="message">想了解的問題：</label>
+                <input type="message" name="message" id="message" class="wanttoknow" required><br>
+
+                <button type="submit" onclick="showMsg" class="send">送出</button>
+                <a>
+                    <img src="../picture/cancel.png" class="cancelbutton">
+                </a>
+            </table>
+        </form>
+    </div>
+
+<a href="#top" class="backtotop">▲</a>
+</body>
+</html>

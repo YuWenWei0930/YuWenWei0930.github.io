@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正艾神｜讓您身心最高度放鬆</title>
+    <link href="../picture/正艾神LOGO原檔(頁籤用).jpg" rel="icon" type="image/jpg">
+    <link rel="stylesheet" href="../css/nav1.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+</head>
+<style>
+    a {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    button {
+        cursor: pointer;
+    }
+    
+    .wrapper {
+        position: relative;
+        top: 150px;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 560px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .wrapper {
+            flex-direction: column;
+        }
+        .leftdiv {
+            flex: 1;
+            order: 1;
+        }
+        .rightdiv {
+            flex: 1;
+            order: 2;
+        }
+    }
+
+    .leftdiv {
+        background-color: green;
+        flex: 4;
+        overflow: hidden;
+    }
+
+    /* TRY1
+    .leftdivphoto {
+        max-width: 100%;
+        max-height: 100%;
+    } */
+
+    /* TRY2 */
+    .leftdivphoto {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .rightdiv {
+        border: 5px solid rgb(186, 221, 150);
+        border-radius: 5px;
+        background-color: rgba(211, 237, 185, 50%);
+        flex: 3;
+        font-size: 18px;
+        padding: 15px;
+    }
+
+    h1 {
+	text-align: center;
+    font-size: 40px;
+    position: relative;
+    top: 200px;
+    margin-bottom: 50px;
+    }
+
+    .productscontainer {
+        position: relative;
+        top: 190px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .product {
+        text-align: center;
+        margin: 20px;
+        border: grey solid 1px;
+        border-radius: 2px;
+        width: 360px;
+        height: 500px;
+    }
+
+    .product img {
+        width: 100%;
+        height: 270px;
+        object-fit: cover;
+    }
+
+    .goodsname {
+        text-align: left;
+        margin-top: 10px;
+        margin-bottom: -10px;
+        padding-left: 15px;
+        font-size: 25px;
+        /* font-family: 'Microsoft Jhenghei'; */
+    }
+
+    .goodsummary {
+        text-align: left;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: 18px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .presstosee {
+        background-color: rgb(186, 221, 150);
+        border:rgb(186, 221, 150) solid 2px;
+        border-radius: 5px;
+    }
+
+    input {
+        font-size: 22px;
+        padding: 10px 5px;
+        border: 1px solid black;
+        margin: 10px;
+    }
+
+</style>
+<script>
+
+    $(function(){
+        $('#contact-button').click(function(){
+            $('#contact-form').css('display', 'block').css('opacity', '100%');
+        })
+
+        $('a').click(function(){
+            $('#contact-form').hide(300);
+        })
+    })
+
+    $(document).ready(function(){
+        $('#formfeedback').submit(function(){
+            if(  $("#tel").val() =='' || $('#message').val() == '' ){
+                event.preventDefault();
+                $('#tel')
+                    .css('background-color', 'rgba(255, 255, 25, 50%)')
+                $('#message')
+                    .css('background-color', 'rgba(255, 255, 25, 50%)')
+                return;
+            } else 
+            {
+                var confirmed = confirm('確定要提交表單嗎？');
+                if (confirmed){
+                    alert("感謝您的提交，我們會盡快進行回復。")
+                }
+                return confirmed;
+                // alert("感謝您的提交，我們會盡快進行回復。")
+            }
+        })
+    })
+</script>
+
+<body>
+    <div class="tophead">
+        <div class="marklogo">
+            <a href="./index.html">
+                <img src="../picture/正艾神LOGO原檔.jpg" class="marklogo">
+            </a>
+        </div>
+    </div>
+
+<a href=""></a>
+ <!-- ==========分隔線========== -->
+    <div class="wrapper">
+        <div class="leftdiv">
+            <a id="imgshref" href="./productintroduction/1.艾灸貼.html" >
+                <img src="./picture/艾灸貼/艾灸貼橫向縮圖.jpg" id="imgs" border="0" class="leftdivphoto"/>
+            </a>
+            <script type="text/javascript">
+                var iImage = -1;
+                setImage();
+                function setImage()
+                {
+                    var img = new Array();
+                    var url = new Array();
+                    img[0] = "./picture/艾灸貼/艾灸貼橫向縮圖.jpg"; url[0] = "./productintroduction/1.艾灸貼.html";
+                    img[1] = "./picture/足底貼/足底貼橫向縮圖照.jpg"; url[1] = "./productintroduction/2.足底貼.html";
+                    img[2] = "./picture/艾柱/艾柱橫向縮圖照.jpg";   url[2] = "./productintroduction/3.艾柱.html";
+                    img[3] = "./picture/艾灸膏/艾灸膏橫向縮圖照.jpg"; url[3] = "./productintroduction/4.艾灸膏.html";
+                    img[4] = "./picture/艾皂/艾皂橫向縮圖照.jpg";	 url[4] = "./productintroduction/5.艾皂.html";
+                    
+                    iImage += 1;
+                    if (iImage >= img.length)
+                        iImage = 0;
+                    document.getElementById("imgs").src = img[iImage];
+                    document.getElementById("imgshref").href = url[iImage];
+                    
+                    setTimeout(setImage, 2000);
+                }
+            </script>
+        </div>
+        <div class="rightdiv">
+            <h3 style="font-size: 30px;">堅持給您最好的品質</h3>
+            <ul style="list-style: none; font-size: 20px;">
+                <li> 艾草在中醫界享有「醫草」之美名，也是中醫最古老的療法之一。</li>
+                <li class="separate">separate</li>
+                <li>數千年以來，人們將艾草作為薰香沐浴或入菜作點心，並廣泛應用艾草作為養生保健用藥。
+                    明朝李時珍在《本草綱目》記載：「艾以葉入藥，性溫、味苦、無毒、純陽之性、
+                    通十二經、具回陽、理氣血、逐濕寒、止血安胎等功效。」
+                    俗語更有一句話是這麼說的：「家有三年艾，郎中不用來。」由此可見，艾草的用途十分廣泛，其效用亦為人所知。
+                </li>
+                <li class="separate">separate</li>
+                <li>在這裡，我們提供多項且高品質的艾草產品，
+                    期望讓您身心都得到最高度放鬆。
+                </li>
+            </ul>
+        </div>
+    </div>
+
+<a href=""></a>
+    <div class="menudiv">
+        <button onclick="location.href='./menu/首頁.html'" class="menubutton">首頁</button>
+        <button onclick="location.href='./menu/點我看產品.html'" class="menubutton">點我看產品</button>
+        <button onclick="location.href='./menu/常見Q&A.html'" class="menubutton">常見Q&A</button>
+        <button id="contact-button" class="menubutton">聯絡我們</button>
+    </div>
+
+    <div id="contact-form" style="display: none;">
+        <form class="form" id="formfeedback">
+            <div class="table"> 
+                <h3>聯絡我們</h3>
+                <p>謝謝您的主動聯絡，請留下想要諮詢的問題，我們會用以下資訊盡快給予回覆。</p>
+            </div>
+
+            <div class="tabletext">
+                <label for="tel">
+                    您的聯絡電話：
+                </label>
+                <input type="tel" name="tel" id="tel" required><br>
+
+                <label for="email">
+                    您的電子郵件：
+                </label>
+                <input type="email" name="email" id="email"><br>
+
+                <label for="message">想了解的問題：</label>
+                <input type="message" name="message" id="message" class="wanttoknow" required><br>
+                <button type="submit" onclick="showMsg" class="send">送出</button>
+            </div>
+            
+            <a>
+                <img src="../picture/cancel.png" class="cancelbutton">
+            </a>
+           
+        </form>
+    </div>
+
+
+    <h1>正艾神｜精選好物</h1>
+	<div class="productscontainer">
+		<div class="product">
+			<img src="./picture/艾灸貼/艾灸貼橫向縮圖.jpg">
+			<h3 class="goodsname">艾灸貼</h3>
+            <p class="goodsummary">
+                內含艾草藥布層，模擬艾灸熱效應原理，隨時隨地輕鬆艾灸。
+                舒緩痠痛的經絡，進而改善其在生活上對您造成的負擔，
+                讓養生不再成為一件麻煩事。
+            </p>
+            <a href="./productintroduction/1.艾灸貼.html" target="_blank">
+                <button class="presstosee">
+                    了解產品
+                </button>
+            </a>
+
+		</div>
+		<div class="product">
+			<img src="./picture/足底貼/足底貼橫向縮圖照.jpg">
+			<h3 class="goodsname">足底貼</h3>
+            <p class="goodsummary">
+                內含艾草等7種複合配方，黏貼於腳底，
+                改善因長期久坐久站造成的下肢循環能力變差，進而緩減水腫。
+                並達到減輕疲勞與保健身體的作用。
+            </p>
+
+            <a href="./productintroduction/2.足底貼.html" target="_blank">
+                <button class="presstosee">
+                    了解產品
+                </button>
+            </a>
+
+		</div>
+		<div class="product">
+			<img src="./picture/艾柱/艾柱橫向縮圖照.jpg">
+			<h3 class="goodsname">艾柱</h3>
+            <p class="goodsummary">
+                使用上等艾草磨成粉末，再用黏膠黏貼而成。
+                於空氣流通的環境點燃，有淨身避邪驅蚊蟲的功效，
+                更能緩和緊繃的身心，天然清香不刺鼻。
+            </p>
+            <a href="./productintroduction/3.艾柱.html">
+                <button class="presstosee">
+                    了解產品
+                </button>
+            </a>
+		</div>
+	</div>
+
+    <div class="productscontainer">
+		<div class="product">
+			<img src="./picture/艾灸膏/艾灸膏橫向縮圖照.jpg">
+			<h3 class="goodsname">艾灸膏</h3>
+            <p class="goodsummary">
+                高純度艾草提煉，再加上源自墨西哥的荷荷巴油等配方，
+                調配出適合全齡使用的艾灸膏。
+                適用於蚊蟲叮咬、滋潤肌膚、溫和修護，長期使用能讓溫灸效果更為深層。
+            </p>
+            <a href="./productintroduction/4.艾灸膏.html" target="_blank">
+                <button class="presstosee">
+                    了解產品
+                </button>
+            </a>
+		</div>
+		<div class="product">
+			<img src="./picture/艾皂/艾皂橫向縮圖照.jpg">
+			<h3 class="goodsname">艾皂</h3>
+            <p class="goodsummary">
+                天然艾草製造，不額外添加過多的化學藥劑與起泡成分，
+                藉由按摩過程，深層清潔毛孔，不論您是乾肌、油肌或是敏感肌都適用
+
+            </p>
+            <a href="./productintroduction/5.艾皂.html" target="_blank">
+                <button class="presstosee">
+                    了解產品
+                </button>
+            </a>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="script.js"></script>
+
+
+<a href="#top" class="backtotop">▲</a>
+</body>
+</html>

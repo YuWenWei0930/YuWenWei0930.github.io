@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>網購須知</title>
+    <link href="../picture/正艾神LOGO原檔(頁籤用).jpg" rel="icon" type="image/jpg">
+    <link rel="stylesheet" href="../css/nav1.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+</head>
+<style>
+
+    a {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    .noticebox {
+        display: inline-block;
+        width: fit-content;
+        position: relative;
+        top: 100px;
+        background-color: rgb(186, 221, 150);
+        padding: 5px;
+        margin: 20px;
+        border: 2px solid  rgb(186, 221, 150);
+        border-radius: 3px;
+    }
+
+
+    /* .noticebox {
+        display: inline-block;
+        flex-wrap: wrap;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgb(186, 221, 150);
+        border: 2px solid  rgb(186, 221, 150);
+        border-radius: 5px;
+    } */
+
+    h2 {
+        text-align: center;
+    }
+
+    .noticetext {
+        width: auto;
+        background-color: white;
+        border: 2px solid  rgb(186, 221, 150);
+        border-radius: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .check {
+        text-align: center;
+        font-size: 20px;
+    }
+</style>
+<script>
+    $(function(){
+        $('a').click(function(event){
+            if(! $('input[type="checkbox"]').prop('checked')){
+                event.preventDefault()
+                $('label').css('color', 'red')
+            }
+        })
+    })
+</script>
+<body>
+    <div class="tophead">
+        <div class="marklogo">
+            <a href="../index.html">
+                <img src="../picture/正艾神LOGO原檔.jpg" class="marklogo">
+            </a>
+        </div>
+    </div>
+
+
+    <div class="menudiv">
+        <button onclick="location.href='./首頁.html'" class="menubutton">首頁</button>
+        <button onclick="location.href='./點我看產品.html'" class="menubutton">點我看產品</button>
+        <button onclick="location.href='./常見Q&A.html'" class="menubutton">常見Q&A</button>
+        <button id="contact-button" class="menubutton">聯絡我們</button>
+    </div>
+
+
+    <div id="contact-form" style="display: none;">
+        <form class="form" id="formfeedback">
+            <div class="table"> 
+                <h3>聯絡我們</h3>
+                <p>謝謝您的主動聯絡，請留下想要諮詢的問題，我們會用以下資訊盡快給予回覆。</p>
+            </div>
+
+            <div class="tabletext">
+                <label for="tel">
+                    您的聯絡電話：
+                </label>
+                <input type="tel" name="tel" id="tel" required><br>
+
+                <label for="email">
+                    您的電子郵件：
+                </label>
+                <input type="email" name="email" id="email"><br>
+
+                <label for="message">想了解的問題：</label>
+                <input type="message" name="message" id="message" class="wanttoknow" required><br>
+                <button type="submit" onclick="showMsg" class="send">送出</button>
+            </div>
+            
+            <a>
+                <img src="../picture/cancel.png" class="cancelbutton">
+            </a>
+           
+        </form>
+    </div>
+
+    <div class="noticebox">
+        <h2>網路購物須知</h2>
+        <h3 style="text-align: center;">
+            為保障您我權益，請詳閱下列說明並勾選已閱讀後前往寄送資料填寫。
+        </h3>
+        <ol class="noticetext">
+            <li>通訊交易或訪問交易之消費者，得於收受商品或接受服務後七日內，
+                以退回商品或書面通知方式解除契約，
+                無須說明理由及負擔任何費用或對價。
+                但通訊交易有合理例外情事者，不在此限。
+            </li>
+            <li>前項但書合理例外情事，由行政院定之。</li>
+            <li>企業經營者於消費者收受商品或接受服務時，
+                未依前條第一項第三款規定提供消費者解除契約相關資訊者，
+                第一項七日期間自提供之次日起算。
+                但自第一項七日期間起算，已逾四個月者，解除權消滅。
+            </li>
+            <li>消費者於第一項及第三項所定期間內，
+                已交運商品或發出書面者，契約視為解除
+            </li>
+            <li>通訊交易或訪問交易違反本條規定所為之約定，其約定無效。</li>
+        </ol>
+        <div class="check">
+            <label><input type="checkbox">已閱讀</label><br><br>
+            <a href="./address.html">前往下一頁填寫資料</a>
+        </div>
+ 
+    </div>
+
+<!-- 上拉下拉---div中的div -->
+<!-- 這裡有用到jQuery的preDefault -->
+</body>
+</html>

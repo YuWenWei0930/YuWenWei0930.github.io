@@ -1,0 +1,300 @@
+/* =====================以下為正艾神大LOGO區===================== */
+.marklogo {
+    position: fixed;
+    left: 40px;
+    top: 0px;
+    width: 100px;
+    height: 100px;
+    }
+
+.tophead {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 999;
+}
+/* =====================以上為正艾神大LOGO區===================== */
+
+
+/* =====================以下為右上角選單區===================== */
+/* .menudiv {
+    background-color: rgb(186, 221, 150);
+    border: 3px solid rgb(186, 221, 150);
+    width: fit-content;
+    height: fit-content;
+    position: fixed;
+    top: 3%;
+    right: 2%;
+    z-index: 9997;
+    } */
+
+
+/* 以下TEST */
+.menudiv {
+    background-color: rgb(186, 221, 150);
+    border: 3px solid rgb(186, 221, 150);
+    width: fit-content; 
+    height: fit-content;
+    position: fixed;
+    top: 3%;
+    left: 72%;
+    right: 10px;
+    z-index: 9997;
+    /* font-size: 50px; */
+}
+
+.menubutton{
+    background-color: rgb(186, 221, 150);
+    border: 3px solid rgb(186, 221, 150);
+    padding: 5px;
+    margin: 2px; 
+    font-weight: bold;
+    font-size: 20px;
+}
+/* 以上TEST */
+
+/* .menubutton{
+    background-color: rgb(186, 221, 150);
+    border: 3px solid rgb(186, 221, 150);
+    padding: 5px;
+    margin: 2px; 
+    font-weight: bold;
+} */
+
+.button {
+    position: relative;
+    left: 10px;
+    font-size: 20px;
+}
+
+/* =====================以上為右上角選單區===================== */
+
+
+
+/* =====================以下為聯絡我們表單===================== */
+.send {
+    background-color: burlywood;
+    border: 3px solid burlywood;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.form {
+    background-color: antiquewhite;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* 使用top和left屬性來將表單位置設置在頁面的中央。transform屬性用於調整表單位置，使其水平和垂直都置中於頁面上。 */
+    width: fit-content;
+    height: 250px;
+    border-radius: 5px;
+    z-index: 9998;
+}
+
+.table {
+    text-align: center;
+    background-color: white;
+    border: 3px solid antiquewhite;
+    border-radius: 5px;
+    margin: 2px;
+    height: fit-content;
+    font-size: 20px;
+}
+
+.tabletext {
+    border: 3px solid antiquewhite;
+    background-color: antiquewhite;
+    border-radius: 5px;
+    height: fit-content;
+    font-size: 25px;
+}
+
+/* input {
+    font-size: 22px;
+    padding: 10px 5px;
+    border: 1px solid black;
+    margin: 10px;
+} */
+
+
+.cancelbutton{
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    width: 26px;
+    height: 26px;
+    margin-top: 0px;
+    /* margin-right: 60px; 這段不要 */
+    cursor: pointer;
+    z-index: 19999;
+}
+
+.wanttoknow {
+    width: 250px;
+    height: 40px;
+    word-wrap: break-word;
+    text-align: left;
+    padding: 15px;
+}
+
+/* =====================以上為聯絡我們表單===================== */
+
+
+
+/* .product {
+    display: flex;
+    align-items: center;
+} */
+
+/* .product img {
+    width: 400px;
+    height: 400px;
+    margin-right: 10px;
+    border: 2px solid aqua;
+} */
+
+
+
+
+/* =====================以下為單項產品個別介紹===================== */
+.images {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.images li {
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.images li img {
+    width: 60px;
+    height: 80px;
+    /* border: 1px solid white; */
+    margin-right: 2px;
+    margin-top: -23px;
+    margin-bottom: 1px;
+}
+
+.images li.active img {
+    border: 1px solid blue;
+}
+#main {
+    width: 400px;
+    height: 480px;
+    margin-right: 20px;
+}
+
+.cart-item {
+    width: 400px;
+    height: 480px;
+    background-color: rgb(113, 197, 225);
+}
+
+
+/* .container {
+    display: flex;
+    position: relative;
+    margin: 10%;
+    flex-wrap: wrap;
+} */
+
+
+.productdetail {
+    width: 440px;
+    height: 480px;
+}
+
+.goodtitle {
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.goodinfo {
+    font-size: 20px;
+    margin-right: 10px;
+    margin-left: -15px;
+    margin-top: 10px;
+    list-style-type: none;
+}
+
+.freesend {
+    font-size: 20px;
+    margin-right: 10px;
+    margin-left: 20px;
+    background-color: gainsboro;
+    border: 1px solid gainsboro;
+    border-radius: 3px;
+}
+
+
+.separate {
+    visibility: hidden;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    top: 90px;
+    justify-content: center; 
+    /* 子元素水平居中 */
+    margin: 10%;
+}
+
+/* TRY
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    top: 90px;
+    justify-content: center; 
+    子元素水平居中
+    margin: 10%;
+} */
+
+
+.aaa {
+    position: absolute;
+    top: 800px;
+}
+/* =====================以上為單項產品個別介紹===================== */
+
+
+
+
+/* =====================以下為至頂箭頭===================== */
+.arrowhead {
+    position: absolute;
+    top: 1000px;
+}
+
+.backtotop {
+    color: black;
+    font-size: 30px;
+    position: fixed;
+    bottom: 1%;
+    right: 1%;
+}
+/*=====================以上為至頂箭頭===================== */
+
+
+
+/* =====================HOVER===================== */
+a:hover {
+    background-color: green;
+}
+
+button:hover {
+    background-color: green;
+}

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁TEST
+    </title>
+    <link href="../picture/正艾神LOGO原檔(頁籤用).jpg" rel="icon" type="image/jpg">
+    <link rel="stylesheet" href="../css/nav1.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+</head>
+<style>
+    a {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    button {
+        cursor: pointer;
+    }
+    
+    .wrapper {
+        position: relative;
+        top: 180px;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 560px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .wrapper {
+            flex-direction: column;
+        }
+        .leftdiv {
+            flex: 1;
+            order: 1;
+        }
+        .rightdiv {
+            flex: 1;
+            order: 2;
+        }
+    }
+
+    .leftdiv {
+        background-color: green;
+        flex: 4;
+        overflow: hidden;
+    }
+
+    /* TRY1
+    .leftdivphoto {
+        max-width: 100%;
+        max-height: 100%;
+    } */
+
+    /* TRY2 */
+    .leftdivphoto {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .rightdiv {
+        background-color: coral;
+        flex: 3;
+    }
+
+    h1 {
+	text-align: center;
+    font-size: 40px;
+    position: relative;
+    top: 200px;
+    margin-bottom: 50px;
+    }
+
+    .productscontainer {
+        position: relative;
+        top: 190px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .product {
+        text-align: center;
+        margin: 20px;
+        border: grey solid 1px;
+        border-radius: 2px;
+        width: 360px;
+        height: 500px;
+    }
+
+    .product img {
+        width: 100%;
+        height: 270px;
+        object-fit: cover;
+    }
+
+    .goodsname {
+        text-align: left;
+        margin-top: 10px;
+        margin-bottom: -10px;
+        padding-left: 15px;
+        font-size: 25px;
+        /* font-family: 'Microsoft Jhenghei'; */
+    }
+
+    .goodsummary {
+        text-align: left;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: 18px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .presstosee {
+        background-color: rgb(186, 221, 150);
+        border:rgb(186, 221, 150) solid 2px;
+        border-radius: 5px;
+    }
+
+
+</style>
+<script>
+
+$(function(){
+        $('#contact-button').click(function(){
+            $('#contact-form').css('display', 'block').css('opacity', '100%');
+        })
+
+        $('a').click(function(){
+            $('#contact-form').hide(300);
+        })
+    })
+
+    $(document).ready(function(){
+        $('#formfeedback').submit(function(){
+            if(  $("#tel").val() =='' || $('#message').val() == '' ){
+                event.preventDefault();
+                $('#tel')
+                    .css('background-color', 'rgba(255, 255, 25, 50%)')
+                $('#message')
+                    .css('background-color', 'rgba(255, 255, 25, 50%)')
+                return;
+            } else 
+            {
+                var confirmed = confirm('確定要提交表單嗎？');
+                if (confirmed){
+                    alert("感謝您的提交，我們會盡快進行回復。")
+                }
+                return confirmed;
+                // alert("感謝您的提交，我們會盡快進行回復。")
+            }
+        })
+    })
+
+
+
+    
+    $(document).ready(function() {
+        // 點擊加入購物車按鈕
+        $('.add-to-cart').click(function() {
+            var product = $(this).parent();
+            var productName = product.find('h3').text();
+            var productPrice = parseInt(product.find('.price').text().substring(1));
+            var productQuantity = parseInt(product.find('.quantity').val());
+
+            // 建立新的購物車項目
+            var item = $('<li></li>');
+            item.text(productName + ' x ' + productQuantity);
+            item.data('price', productPrice * productQuantity);
+            
+            // 加入刪除按鈕
+            var deleteBtn = $('<button class="delete-item">刪除</button>');
+            item.append(deleteBtn);
+
+            // 將購物車項目添加到購物車列表中
+            $('.cart-items').append(item);
+            
+            // 更新總價格
+            updateTotalPrice();
+        });
+        
+        // 點擊刪除按鈕刪除購物車項目
+        $(document).on('click', '.delete-item', function() {
+            $(this).parent().remove();
+            updateTotalPrice();
+        });
+        
+        // 輸入數量時更新總價格
+        $('.quantity').on('input', function() {
+            updateTotalPrice();
+        });
+
+        // $('form').submit(function(event) {
+        //     event.preventDefault();
+        //     var totalPrice = $('.total-price').text();
+        //     alert("您購買的產品" + totalPrice +
+        //           " \n請前往下一頁");
+        // });
+
+
+        // $('form').submit(function(event) {
+        //     event.preventDefault();
+        //     var totalPrice = $('.total-price').text();
+        //     alert("您購買的產品" + totalPrice);
+        //     var confirmed = confirm('是否前往下一步？');
+        //     if(confirmed){
+        //         window.location.href = "../購買系列/affidavit.html";
+        //     }
+        //     return;
+        // });
+
+
+        $('form').submit(function(event) {
+            event.preventDefault();
+            var totalPrice = $('.total-price').text();
+            // alert("您購買的產品" + totalPrice);
+            var confirmed = confirm( "您購買的產品" + totalPrice+ '\n是否前往下一步？');
+            if(confirmed){
+                window.location.href = "../購買系列/affidavit.html";
+            }
+            return;
+        });
+
+    });
+
+    function updateTotalPrice() {
+        var totalPrice = 0;
+        $('.cart-items li').each(function() {
+            var itemPrice = $(this).data('price');
+            totalPrice += itemPrice;
+        });
+        $('.total-price').text('總價格為：$' + totalPrice);
+    }
+
+
+</script>
+
+<body>
+    <div class="tophead">
+        <div class="marklogo">
+            <a href="../project封面.html">
+                <img src="../picture/正艾神LOGO原檔.jpg" class="marklogo">
+            </a>
+        </div>
+    </div>
+
+
+ <!-- ==========分隔線========== -->
+    <div class="wrapper">
+        <div class="leftdiv">
+            <a id="imgshref" href="../productintroduction/1.艾灸貼.html" >
+                <img src="../picture/艾灸貼/艾灸貼橫向縮圖.jpg" id="imgs" border="0" class="leftdivphoto"/>
+            </a>
+            <script type="text/javascript">
+                var iImage = -1;
+                setImage();
+                function setImage()
+                {
+                    var img = new Array();
+                    var url = new Array();
+                    img[0] = "../picture/艾灸貼/艾灸貼橫向縮圖.jpg"; url[0] = "../productintroduction/1.艾灸貼.html";
+                    img[1] = "../picture/足底貼/足底貼橫向縮圖照.jpg"; url[1] = "../productintroduction/2.足底貼.html";
+                    img[2] = "../picture/艾柱/艾柱橫向縮圖照.jpg";   url[2] = "../productintroduction/3.艾柱.html";
+                    img[3] = "../picture/艾灸膏/艾灸膏橫向縮圖照.jpg"; url[3] = "../productintroduction/4.艾灸膏.html";
+                    img[4] = "../picture/艾皂/艾皂橫向縮圖照.jpg";	 url[4] = "../productintroduction/5.艾皂.html";
+                    
+                    iImage += 1;
+                    if (iImage >= img.length)
+                        iImage = 0;
+                    document.getElementById("imgs").src = img[iImage];
+                    document.getElementById("imgshref").href = url[iImage];
+                    
+                    setTimeout(setImage, 2000);
+                }
+            </script>
+        </div>
+        <div class="rightdiv">我是右邊DIV</div>
+    </div>
+
+
+    <div class="menudiv">
+        <button onclick="location.href='./首頁.html'" class="menubutton">首頁</button>
+        <button onclick="location.href='./點我看產品.html'" class="menubutton">點我看產品</button>
+        <button onclick="" class="menubutton">我的購買紀錄</button>
+        <button onclick="location.href='./常見Q&A.html'" class="menubutton">常見Q&A</button>
+        <button id="contact-button" class="menubutton">聯絡我們</button>
+    </div>
+
+    <div id="contact-form" style="display: none;">
+        <form class="form" id="formfeedback">
+            <table class="table">
+                <tr>
+                    <th>聯絡我們</th>
+                </tr>
+                <tr>
+                    <td>
+                        謝謝您的主動聯絡，請留下想要諮詢的問題，我們會用以下資訊盡快給予回覆。
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <label for="tel">
+                    您的聯絡電話：
+                </label>
+                <input type="tel" name="tel" id="tel" required><br>
+
+                <label for="email">
+                    您的電子郵件：
+                </label>
+                <input type="email" name="email" id="email"><br>
+
+                <label for="message">想了解的問題：</label>
+                <input type="message" name="message" id="message" class="wanttoknow" required><br>
+
+                <button type="submit" onclick="showMsg" class="send">送出</button>
+                <a>
+                    <img src="../picture/cancel.png" class="cancelbutton">
+                </a>
+            </table>
+        </form>
+    </div>
+
+
+    <h1>正艾神｜精選好物</h1>
+	<div class="productscontainer">
+		<div class="product">
+			<img src="../picture/艾灸貼/艾灸貼縮圖照2.jpg">
+			<h3 class="goodsname">艾灸貼</h3>
+            <p class="goodsummary">
+                內含艾草藥布層，模擬艾灸熱效應原理，隨時隨地輕鬆艾灸。
+                舒緩痠痛的經絡，進而改善其在生活上對您造成的負擔，
+                讓養生不再成為一件麻煩事。
+            </p>
+            <a href="../productintroduction/1.艾灸貼.html" target="_blank">
+                <button class="presstosee">
+                    了解產品
+                </button>
+            </a>
+
+		</div>
+		<div class="product">
+			<img src="../picture/足底貼/足底貼橫向縮圖照.jpg">
+			<h3 class="goodsname">足底貼</h3>
+            <p class="goodsummary">
+                (內含艾草藥布層，模擬艾灸熱效應原理，隨時隨地輕鬆艾灸。
+                舒緩痠痛的經絡，進而改善其在生活上對您造成的負擔，
+                讓養生不再成為一件麻煩事。)
+            </p>
+
+            <a href="../productintroduction/2.足底貼.html" target="_blank">
+                <button class="presstosee">
+                    了解產品
+                </button>
+            </a>
+
+		</div>
+		<div class="product">
+			<img src="../picture/艾柱/艾柱橫向縮圖照.jpg">
+			<h3 class="goodsname">艾柱</h3>
+            <p class="goodsummary">
+                (內含艾草藥布層，模擬艾灸熱效應原理，隨時隨地輕鬆艾灸。
+                舒緩痠痛的經絡，進而改善其在生活上對您造成的負擔，
+                讓養生不再成為一件麻煩事。)
+            </p>
+            <a href="../productintroduction/3.艾柱.html">
+                <button class="presstosee">
+                    了解產品
+                </button>
+            </a>
+		</div>
+	</div>
+
+    <div class="productscontainer">
+		<div class="product">
+			<img src="../picture/艾灸膏/艾灸膏橫向縮圖照.jpg">
+			<h3 class="goodsname">艾灸膏</h3>
+            <p class="goodsummary">
+                (內含艾草藥布層，模擬艾灸熱效應原理，隨時隨地輕鬆艾灸。
+                舒緩痠痛的經絡，進而改善其在生活上對您造成的負擔，
+                讓養生不再成為一件麻煩事。)
+            </p>
+            <a href="../productintroduction/4.艾灸膏.html" target="_blank">
+                <button class="presstosee">
+                    了解產品
+                </button>
+            </a>
+		</div>
+		<div class="product">
+			<img src="../picture/艾皂/艾皂橫向縮圖照.jpg">
+			<h3 class="goodsname">艾皂</h3>
+            <p class="goodsummary">
+                (內含艾草藥布層，模擬艾灸熱效應原理，隨時隨地輕鬆艾灸。
+                舒緩痠痛的經絡，進而改善其在生活上對您造成的負擔，
+                讓養生不再成為一件麻煩事。)
+            </p>
+            <a href="../productintroduction/5.艾皂.html" target="_blank">
+                <button class="presstosee">
+                    了解產品
+                </button>
+            </a>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="script.js"></script>
+
+
+<a href="#top" class="backtotop">▲</a>
+</body>
+</html>

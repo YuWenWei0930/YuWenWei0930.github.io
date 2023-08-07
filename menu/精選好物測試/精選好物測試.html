@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>精選好物測試</title>
+    <link href="../picture/正艾神LOGO原檔.jpg" rel="icon" type="image/jpg">
+    <link rel="stylesheet" href="../css/nav1.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+</head>
+
+<style>
+
+    a {
+        text-decoration: none;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .productscontainer{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .product {
+        width: 300px;
+        text-align: center;
+        margin: 20px;
+        background-color: pink;
+    }
+
+    .product img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .product p.price {
+        font-weight: bold;
+    }
+
+    .product input.quantity {
+        width: 40px;
+    }
+
+</style>
+
+<script>
+    
+    $(function(){
+        $('#contact-button').click(function(){
+            $('#contact-form').css('display', 'block').css('opacity', '100%');
+        })
+
+        $('a').click(function(){
+            $('#contact-form').hide(300);
+        })
+    })
+
+    $(document).ready(function(){
+        $('#formfeedback').submit(function(){
+            if(  $("#tel").val() =='' || $('#message').val() == '' ){
+                event.preventDefault();
+                $('#tel')
+                    .css('background-color', 'rgba(255, 255, 25, 50%)')
+                $('#message')
+                    .css('background-color', 'rgba(255, 255, 25, 50%)')
+                return;
+            } else 
+            {
+                var confirmed = confirm('確定要提交表單嗎？');
+                if (confirmed){
+                    alert("感謝您的提交，我們會盡快進行回復。")
+                }
+                return confirmed;
+                // alert("感謝您的提交，我們會盡快進行回復。")
+            }
+        })
+    })
+
+
+    $(document).ready(function() {
+	// 點擊加入購物車按鈕
+	$('.add-to-cart').click(function() {
+		var product = $(this).parent();
+		var productName = product.find('h3').text();
+		var productPrice = parseInt(product.find('.price').text().substring(1));
+		var productQuantity = parseInt(product.find('.quantity').val());
+		
+		// 建立新的購物車項目
+		var item = $('<li></li>');
+		item.text(productName + ' x ' + productQuantity);
+		item.data('price', productPrice * productQuantity);
+		
+		// 將購物車項目添加到購物車列表中
+		$('.cart-items').append(item);
+		
+		// 更新總價格
+		updateTotalPrice();
+	});
+	
+	// 輸入數量時更新總價格
+	$('.quantity').on('input', function() {
+		updateTotalPrice();
+	});
+	
+	// 提交表單時顯示總價格
+	$('form').submit(function(event) {
+		event.preventDefault();
+		var totalPrice = $('.total-price').text();
+		var city = $('#city').val();
+		alert('總價格：' + totalPrice);
+	});
+});
+
+function updateTotalPrice() {
+	var totalPrice = 0;
+	$('.cart-items li').each(function() {
+		var itemPrice = $(this).data('price');
+		totalPrice += itemPrice;
+	});
+	$('.total-price').text('總價格：$' + totalPrice);
+}
+
+
+</script>
+
+
+
+<body>
+    <div class="tophead">
+        <div class="marklogo">
+            <a href="../project封面.html">
+                <img src="../picture/正艾神LOGO原檔.jpg" class="marklogo">
+            </a>
+        </div>
+    </div>
+
+    <div class="menudiv">(待優化)
+        <button onclick="location.href='./首頁.html'" class="menubutton">首頁</button>
+        <button onclick="location.href='./點我看產品.html'" class="menubutton">點我看產品</button>
+        <button onclick="" class="menubutton">查看購物車</button>
+        <button onclick="" class="menubutton">我的購買紀錄</button>
+        <button onclick="location.href='./常見Q&A.html'" class="menubutton">常見Q&A</button>
+        <button id="contact-button" class="menubutton">聯絡我們</button>
+    </div>
+
+    <div id="contact-form" style="display: none;">
+        <form class="form" id="formfeedback">
+            <table class="table">
+                <tr>
+                    <th>聯絡我們</th>
+                </tr>
+                <tr>
+                    <td>
+                        謝謝您的主動聯絡，請留下要諮詢的問題，我們會用以下資訊進行回覆。
+                        謝謝您的主動聯絡，請留下要諮詢的問題，我們會用以下資訊進行回覆。
+                    </td>
+                </tr>
+            </table>
+            <label for="tel">聯絡電話：</label>
+            <input type="tel" name="tel" id="tel" required><br>
+
+            <label for="email">電子郵件：</label>
+            <input type="email" name="email" id="email"><br>
+
+            <label for="message">想了解的問題：</label>
+            <input type="message" name="message" id="message" required><br>
+
+            <button type="submit" onclick="showMsg" class="send">送出</button>
+            <a>
+                <img src="../picture/cancel.png" class="cancelbutton">
+            </a>
+        </form>
+    </div>
+
+
+    <nav style="font-size: 150px;">正艾神｜精選好物</nav>
+	<div class="productscontainer">
+		<div class="product">
+			<img src="../picture/艾灸貼.jpg">
+			<h3>艾灸貼</h3>
+            <p>
+                (這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，
+                這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，)
+            </p>
+			<p class="price">NT$400</p>
+            <label for="buy">請選擇購買數量：</label>
+			<input id="buy" type="number" min="0" value="0" class="quantity"><br>
+            <!-- 要回來設購買上限 -->
+			<button class="add-to-cart">加入購物車</button>
+            <a href="../productintroduction/1.艾灸貼.html" target="_blank">
+                <button>點我看產品介紹</button>
+            </a>
+		</div>
+		<div class="product">
+			<img src="../picture/足底貼.jpg">
+			<h3>足底貼</h3>
+            <p>
+                (這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，
+                這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，)
+            </p>
+			<p class="price">$400</p>
+			<input type="number" min="0" value="0" class="quantity">
+			<button class="add-to-cart">加入購物車</button>
+            <a href="../productintroduction/2.足底貼.html" target="_blank">
+                <button>點我看產品介紹</button>
+            </a>
+		</div>
+		<div class="product">
+			<img src="../picture/艾柱.jpg">
+			<h3>艾柱</h3>
+            <p>
+                (這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，
+                這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，)
+            </p>
+			<p class="price">$300</p>
+			<input type="number" min="0" value="0" class="quantity">
+			<button class="add-to-cart">加入購物車</button>
+            <a href="../productintroduction/3.艾柱.html" target="_blank">
+                <button>點我看產品介紹</button>
+            </a>
+		</div>
+		<div class="product">
+			<img src="../picture/艾灸膏.jpg">
+			<h3>艾灸膏</h3>
+            <p>
+                (這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，
+                這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，)
+            </p>
+			<p class="price">$200</p>
+			<input type="number" min="0" value="0" class="quantity">
+			<button class="add-to-cart">加入購物車</button>
+            <a href="../productintroduction/4.艾灸膏.html" target="_blank">
+                <button>點我看產品介紹</button>
+            </a>
+		</div>
+		<div class="product">
+			<img src="../picture/艾皂.jpg">
+			<h3>艾皂</h3>
+            <p>
+                (這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，
+                這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，這裡是寫產品的簡單介紹，)
+            </p>
+			<p class="price">$200</p>
+			<input type="number" min="0" value="0" class="quantity">
+			<button class="add-to-cart">加入購物車</button>
+            <a href="../productintroduction/5.艾皂.html" target="_blank">
+                <button>點我看產品介紹</button>
+            </a>
+		</div>
+	</div>
+	<div class="cart">
+		<h2>購物車</h2>
+		<ul class="cart-items">
+		</ul>
+		<p class="total-price">總價格：$0</p>
+		<form>
+			<button type="submit">結帳</button>
+		</form>
+	</div>
+
+
+    <a href="#top" style=" color: black; font-size: 50px;">▲</a>
+    <!-- jQuery函式 -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>
